@@ -14,6 +14,9 @@ The main purpose is to:
 
 The instructions of the image is in a Dockerfile. Commands are explained with comments.
 
+Commands:
+- build
+
 **Build an image**
 
 Build the image based on the instructions form Dockerfile.
@@ -21,13 +24,13 @@ We specify that the Docker file is in the current directory and with the -t flag
 
 ```docker build . -t rivancic/python-flask:latest```
 
-**Run the container based on the above image**
-
-To spin up container that is the actual instance of the image we issue docker run command with the name of the image and a tag. 
-With flag -p port mapping is defined. Port 8080 on host will be mapped to port 80 in container. In port specification on the Llft is host port, on the right is port of the container.
-With --name flag specific readable name is set for the container. Otherwise default name is set.
-
 ### 2) Upload image to DockerHub
+
+Commands:
+- login
+- tag
+- push
+- pull
 
 Login to dockerhub with following command and provide credentials
 
@@ -47,9 +50,22 @@ After the upload finishes a new image should be available in your docker image r
 
 ### 3) Running image and managing container / images
 
+Commands:
+- run
+- start
+- stop
+- exec
+- ps
+- images
+- logs
+- rm
+- rmi
+
 **Running Starting Stopping**
 
-Now as image was build locally one can run the image as a container
+To spin up container that is the actual instance of the image we issue docker run command with the name of the image and a tag. 
+With flag -p port mapping is defined. Port 8080 on host will be mapped to port 80 in container. In port specification on the Llft is host port, on the right is port of the container.
+With --name flag specific readable name is set for the container. Otherwise default name is set.
 
 ```docker run -p 8080:80 --name python-flask rivancic/python-flask:latest```
 
@@ -77,6 +93,10 @@ Command /bin/sh will run shell in alpine image. So you can use it to execute oth
 
 **Inspection**
 
+To see images run 
+
+```docker images```
+
 One can list all running containers with:
 
 ```docker ps```
@@ -84,10 +104,6 @@ One can list all running containers with:
 While if you are interested also in stopped containers use -a flag to show all.
 
 ```docker ps -a```
-
-To see images run 
-
-```docker images```
 
 To inspect docker logs you can use logs command. With -f flag to keep following on new logs
 

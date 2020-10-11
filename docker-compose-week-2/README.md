@@ -4,7 +4,7 @@ The repository is based on DataStax Devs Docker Learning Path. (https://github.c
 
 The main purpose is to:
 1) Create environment with Docker Compose script so that more than the application that depends on multiple services is spinned up in multiple docker containers which communicate with each other.
-2) For that I will use my hobby project that is otherwise deployed in AWS environment and accessible on [ITShelf.com](itshelf.com).
+2) For that I will use my hobby project that is otherwise deployed in AWS environment and accessible on [ITShelf.com](http://itshelf.com).
 
 ## Application
 

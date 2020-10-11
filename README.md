@@ -1,7 +1,7 @@
 # docker-example
 Docker basics revisited
 
-The repository is based on DataStax Devs Docker Learning Path. (https://github.com/datastaxdevs/docker-learning-path/tree/master/week-1)
+The repository is based on DataStax Devs Docker Learning Path. (https://github.com/datastaxdevs/docker-learning-path)
 
 ## Week 1
 

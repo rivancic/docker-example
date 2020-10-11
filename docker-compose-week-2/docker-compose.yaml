@@ -1,0 +1,40 @@
+version: '3.8'
+
+# Store postgres database once initialized
+volumes:
+  postgres-data: {}
+  
+services:
+
+  # SpringBoot Thymeleaf Web Application
+  itshelf-app:
+    # Build local Docker Image for the application
+    build: .
+    # Expose it on port 80 of localhost 
+    ports:
+      - "80:5000" 
+    # Restart in case of any issues
+    restart: on-failure
+    # Wait for DB to start
+    depends_on: 
+      - itshelf-db
+    # Instruct connection string and credentials for the db connection
+    environment:
+        spring.datasource.username: postgres
+        spring.datasource.password: test1234
+        spring.datasource.url: jdbc:postgresql://itshelf-db:5432/postgres?stringtype=unspecified
+
+  # Postgress DB with initial schema and dummy testing data
+  itshelf-db:
+    # Official postgress image form the DockerHub
+    image: postgres:11
+    # 1st volume is for initialization script that contains creation commands and dummy data
+    # 2nd volume is for db data persistance after initialization is complete
+    # Postgres DB is smart enough to skip initialization script if there is already db data present
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-data:/var/lib/postgresql/data
+    # Create Postgres db user and pwd
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: test1234

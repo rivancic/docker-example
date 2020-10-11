@@ -4,19 +4,19 @@ The repository is based on DataStax Devs Docker Learning Path. (https://github.c
 
 The main purpose is to:
 1) Create environment with Docker Compose script so that more than the application that depends on multiple services is spinned up in multiple docker containers which communicate with each other.
-2) For that I will use my hoby project that is otherwise deployed in AWS environment.
+2) For that I will use my hobby project that is otherwise deployed in AWS environment and accessible on [ITShelf.com](itshelf.com).
 
 ## Application
 
 ### Springboot Java Application
 
 First dockerized component is Springboot Java Application that renders content with the Thymeleaf template engine.
-It content management service that offers list of online IT courses and events.
+It's a content management service that offers list of online IT courses and events.
 The service is completely stateless. To be able to present event information it needs underlaying database.
 
 ### Postgres Database
 
-Simple Postgres database containing basic information about IT events.
+Postgres database containing basic information about IT events.
 Data is initialized for the first time the DB container is run. 
 Tables are generated based on the init.sql and dummy data is loaded with SQL INSERT statements. 
 Specific volume is mounted to the image which is serving as data persistence. 
